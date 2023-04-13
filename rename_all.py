@@ -35,7 +35,6 @@ photo_extensions = ['.jpg', '.jpeg', '.jpe', '.jif', '.jfif', '.jfi', '.png', '.
 
 def rename_all(source_dir: str, dry_run=True) -> None:
     """
-
     :param source_dir:
     :param dry_run:
     """

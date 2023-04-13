@@ -13,7 +13,7 @@ __maintainer__ = "Jason A. Arter"
 __email__ = "jason.arter@gmail.com"
 __status__ = "Prototype"
 __updated__ = "2021-04-01"
-__python_version__ = "3.9"
+__python_version__ = "3.10"
 ##############################################################################
 
 
