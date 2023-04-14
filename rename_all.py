@@ -20,17 +20,20 @@ __python_version__ = "3.9"
 import os
 import datetime
 import PIL
+import re
 from PIL import Image
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 from win32api import MoveFile
 from secrets import choice
 
 
+file_pattern = re.compile(r"\d{4}-\d{2}-\d{2}T\d{2}\.\d{2}\.\d{2}\.\d{3}.\w*", re.IGNORECASE)
 dtg_tags = [0x0132, 0x9003, 0x9004, 0xC71B]
 photo_extensions = ['.jpg', '.jpeg', '.jpe', '.jif', '.jfif', '.jfi', '.png', '.gif',
                     '.webp', '.tiff', '.tif', '.psd', '.raw', '.arw', '.cr2', '.k25',
                     '.bmp', '.dib', '.heif', '.heic', 'ind', 'indd', 'indt', '.svg',
-                    '.svgz', '.jp2', '.j2k', '.jpf', '.jpx', '.jpm', '.mj2', '.ai', '.eps']
+                    '.svgz', '.jp2', '.j2k', '.jpf', '.jpx', '.jpm', '.mj2', '.ai',
+                    '.eps', '.png']
 
 
 def rename_all(source_dir: str, dry_run=True) -> None:
@@ -46,6 +49,10 @@ def rename_all(source_dir: str, dry_run=True) -> None:
     filenames = [x for x in source_path.glob('**/*.*') if x.suffix.lower() in photo_extensions]
     for source_file_path in filenames:
         times = []
+        my_filename = PureWindowsPath(source_file_path).name
+        if file_pattern.match(my_filename):
+            print("File has correct naming format:", source_file_path)
+            continue
         try:
             with Image.open(source_file_path) as img:
                 stat_info = os.stat(source_file_path)
@@ -75,8 +82,11 @@ def rename_all(source_dir: str, dry_run=True) -> None:
                             print(f"old: {source_file_path}\t\t\tnew: {new_file_path}")
                     else:
                         print(f"{new_file_path} already exists.")
-        except PIL.UnidentifiedImageError:
-            continue
+        except:
+            print("I've hit the exception on filename:", source_file_path)
+        # except PIL.UnidentifiedImageError:
+        #     print("PIL couldn't identify image:", source_file_path)
+        #     continue
 
 
 if __name__ == '__main__':
@@ -85,4 +95,4 @@ if __name__ == '__main__':
     # parser.add_argument("-d", "--destination", required=True, help="Directory to copy photos to.", type=str)
     # my_args = parser.parse_args()
 
-    rename_all(source_dir=r"C:/Users/jarter/Dropbox/Hildegarde", dry_run=False)
+    rename_all(source_dir=r"D:\Files\Photos", dry_run=False)
