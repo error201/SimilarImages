@@ -4,16 +4,16 @@
 
 ##############################################################################
 __author__ = "JArter"
-__date__ = "2021-04-21"
-__copyright__ = "Copyright April 2021"
+__date__ = "2023-04-13"
+__copyright__ = "Copyright April 2023"
 __credits__ = ["Jason A. Arter"]
 __license__ = "GPL"
 __version__ = "1.0"
 __maintainer__ = "Jason A. Arter"
 __email__ = "jason.arter@gmail.com"
 __status__ = "Prototype"
-__updated__ = "2021-04-21"
-__python_version__ = "3.9"
+__updated__ = "2023-04-14"
+__python_version__ = "3.11"
 ##############################################################################
 
 
