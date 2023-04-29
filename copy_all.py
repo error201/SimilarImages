@@ -17,6 +17,7 @@ __python_version__ = "3.9"
 ##############################################################################
 
 
+import argparse
 from shutil import copy2
 from pathlib import Path
 
@@ -59,4 +60,8 @@ def copy_all(source_dir: str, dest_dir: str) -> None:
 
 
 if __name__ == '__main__':
-    copy_all(source_dir=r"f:/Files/Photos/Alessia Ramirez Eng", dest_dir=r"f:/Files/Photo_Copies/")
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-s", "--source", required=True, help="Directory to copy photos from.", type=str)
+    parser.add_argument("-d", "--destination", required=True, help="Directory to copy photos to.", type=str)
+    my_args = parser.parse_args()
+    copy_all(source_dir=my_args.source, dest_dir=my_args.destination)

@@ -32,7 +32,7 @@ photo_extensions = ['.jpg', '.jpeg', '.jpe', '.jif', '.jfif', '.jfi', '.png', '.
                     '.webp', '.tiff', '.tif', '.psd', '.raw', '.arw', '.cr2', '.k25',
                     '.bmp', '.dib', '.heif', '.heic', 'ind', 'indd', 'indt', '.svg',
                     '.svgz', '.jp2', '.j2k', '.jpf', '.jpx', '.jpm', '.mj2', '.ai',
-                    '.eps', '.png']
+                    '.eps']
 
 
 def rename_all(source_dir: str, dry_run=True) -> None:
