@@ -19,13 +19,3 @@ __python_version__ = "3.11"
 
 from dotenv import dotenv_values
 import pymysql as ms
-
-
-def create_db():
-    config = dotenv_values(".env")
-    conn = ms.connect(host='localhost',
-                      user=config["DB_USER"],
-                      password=config["DB_PASSWORD"],
-                      autocommit=True)
-    my_cursor = conn.cursor()
-    statement = f""

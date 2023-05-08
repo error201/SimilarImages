@@ -60,6 +60,12 @@ def find_duplicates(self):
         print("No Duplicates Found :(")
 
 
+def test_hash(location: str, hash_size: int = 8, similarity: int = 80) -> None:
+    with Image.open(location) as img:
+        hash1 = imagehash.average_hash(img, hash_size).hash
+        print(hash1)
+
+
 def find_similar(self, location: str, similarity: int = 80) -> None:
     filenames = os.listdir(self.dirname)
     threshold = 1 - similarity / 100
