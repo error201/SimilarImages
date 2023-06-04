@@ -1,3 +1,4 @@
 # Ignore all Pycharm folders.
 /.idea/
 /.env
+/__*
