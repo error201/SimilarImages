@@ -50,7 +50,7 @@ def rename_all(source_dir: str, dry_run=True) -> None:
         times = []
         my_filename = PureWindowsPath(source_file_path).name
         if file_pattern.match(my_filename):
-            print("File has correct naming format:", source_file_path)
+            #print("File has correct naming format:", source_file_path)
             continue
         try:
             with Image.open(source_file_path) as img:
@@ -94,4 +94,4 @@ if __name__ == '__main__':
     # parser.add_argument("-d", "--destination", required=True, help="Directory to copy photos to.", type=str)
     # my_args = parser.parse_args()
 
-    rename_all(source_dir=r"D:\Files\Photos", dry_run=False)
+    rename_all(source_dir=r"F:\Files\Photos", dry_run=False)
